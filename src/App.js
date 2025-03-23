@@ -64,7 +64,7 @@ function App() {
         <ToggleButton /> */}
         {/* {"aiueo"} */}
         <p>{id}の、GitHub上の名前は{name}です。</p>
-        <Button variant="contained" onClick={getRandomId}>IDを変更</Button>
+        <Button variant="contained" size="large" onClick={getRandomId}>IDを変更</Button>
         </div>
     )
 };
