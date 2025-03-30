@@ -63,7 +63,7 @@ function App() {
         <Counter />
         <ToggleButton /> */}
         {/* {"aiueo"} */}
-        <p>{id}の、GitHub上の名前は{name}です。</p>
+        <p>{id}の、GitHub上の名前は{name}です。※devcontainer開通</p>
         <Button variant="contained" size="large" onClick={getRandomId}>IDを変更</Button>
         </div>
     )
