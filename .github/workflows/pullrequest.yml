@@ -1,0 +1,23 @@
+name: Pull Request Notification
+
+on:
+  pull_request:
+    branches:
+      - main  # プルリクエストのターゲットブランチを指定（例: main）
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      # タイムゾーンを日本時間に設定
+      - name: Set timezone to JST
+        run: sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
+      # リポジトリをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # プルリクエスト完了メッセージを表示
+      - name: Display pull request message
+        run: echo "プルリクエスト作成：$(date '+%Y-%m-%d %H:%M:%S')"
