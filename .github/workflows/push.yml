@@ -3,7 +3,7 @@ name: Push Complete Notification
 on:
   push:
     branches:
-      - main  # 監視するブランチを指定（例: main）
+      - develop  # 監視するブランチを指定（例: main）
 
 jobs:
   notify:
