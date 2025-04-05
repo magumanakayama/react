@@ -16,4 +16,4 @@ jobs:
 
       # プッシュ完了メッセージを表示
       - name: Display push complete message
-        run: echo "プッシュ完了"
+        run: echo "プッシュ完了：$(date '+%Y-%m-%d %H:%M:%S')"
