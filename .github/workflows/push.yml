@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # タイムゾーンを日本時間に設定
+      - name: Set timezone to JST
+        run: sudo ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
       # リポジトリをチェックアウト
       - name: Checkout repository
         uses: actions/checkout@v3
