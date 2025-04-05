@@ -1,9 +1,9 @@
-name: Push Complete Notification
+name: Pull Request Notification
 
 on:
-  push:
+  pull_request:
     branches:
-      - develop  # 監視するブランチを指定（例: main）
+      - main  # プルリクエストのターゲットブランチを指定（例: main）
 
 jobs:
   notify:
@@ -18,6 +18,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # プッシュ完了メッセージを表示
-      - name: Display push complete message
-        run: echo "プッシュ完了：$(date '+%Y-%m-%d %H:%M:%S')"
+      # プルリクエスト完了メッセージを表示
+      - name: Display pull request message
+        run: echo "プルリクエスト作成：$(date '+%Y-%m-%d %H:%M:%S')"
