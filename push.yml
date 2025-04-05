@@ -1,0 +1,19 @@
+name: Push Complete Notification
+
+on:
+  push:
+    branches:
+      - main  # 監視するブランチを指定（例: main）
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      # リポジトリをチェックアウト
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # プッシュ完了メッセージを表示
+      - name: Display push complete message
+        run: echo "プッシュ完了"
