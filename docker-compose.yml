@@ -8,3 +8,14 @@ services:
     ports:
       - "3000:3000"
     tty: true
+
+  db:
+    image: postgres:17-bookworm
+    ports:
+      - "3002:5432" # PostgreSQL のデフォルトポートは 5432
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'my_database' # 初期データベース名
+    volumes:
+      - ./init-scripts:/docker-entrypoint-initdb.d/ # 初期化スクリプトをマウント
