@@ -5,6 +5,23 @@ services:
     volumes:
       - ./public:/react/public
       - ./src:/react/src
+      - ./package.json:/react/package.json
+      - ./yarn.lock:/react/yarn.lock
     ports:
       - "3000:3000"
     tty: true
+
+  db:
+    image: postgres:17-bookworm
+    ports:
+      - "3002:5432" # PostgreSQL のデフォルトポートは 5432
+    environment:
+      POSTGRES_USER: 'user'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'my_database' # 初期データベース名
+    volumes:
+      - postgres_data:/var/lib/postgresql/data # 起動の度にボリュームが作成されるのをを防ぐのためのボリューム
+      - ./init-scripts:/docker-entrypoint-initdb.d/ # 初期化スクリプトをマウント
+      
+volumes:
+  postgres_data:
