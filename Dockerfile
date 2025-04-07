@@ -23,8 +23,9 @@ RUN echo '#!/bin/sh' > /usr/local/bin/dockerInit.sh \
 && echo 'touch ./yarn.lock && yarn install && touch ./absdefg.txt && exec "$@" ' >> /usr/local/bin/dockerInit.sh \
 && chmod +x /usr/local/bin/dockerInit.sh
 
-# 作業ディレクトリ変更
+# ユーザー変更/作業ディレクトリ変更
 WORKDIR /$FRONT_ROOT
+USER $USERNAME
 
 # アプリケーションファイルのコピー/権限変更
 RUN chown $USERNAME:dialout /$FRONT_ROOT/*
