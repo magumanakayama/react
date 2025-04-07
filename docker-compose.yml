@@ -2,11 +2,12 @@
 services:
   front:
     build: .
+    container_name: my_front # コンテナ名を指定
     volumes:
       - ./public:/react/public
       - ./src:/react/src
       - ./package.json:/react/package.json
-      - ./yarn.lock:/react/yarn.lock
+      # - ./yarn.lock:/react/yarn.lock
     ports:
       - "3000:3000"
     tty: true
