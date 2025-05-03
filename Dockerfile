@@ -3,7 +3,7 @@ FROM node:22-bookworm-slim
 LABEL maintainer='マグマ中山'
 
 # アプリケーションディレクトリ名を環境変数に指定
-ENV FRONT_ROOT react
+ENV FRONT_ROOT=react
 
 # git postgresのインストール
 RUN apt-get update && \
@@ -20,12 +20,11 @@ RUN mkdir -p /$FRONT_ROOT/src
 
 # コンテナ起動時スクリプトの生成
 RUN echo '#!/bin/sh' > /usr/local/bin/dockerInit.sh \
-&& echo 'touch ./yarn.lock && yarn install && touch ./absdefg.txt && exec "$@" ' >> /usr/local/bin/dockerInit.sh \
+&& echo 'touch ./yarn.lock && yarn install && exec "$@" ' >> /usr/local/bin/dockerInit.sh \
 && chmod +x /usr/local/bin/dockerInit.sh
 
-# ユーザー変更/作業ディレクトリ変更
+# 作業ディレクトリ変更
 WORKDIR /$FRONT_ROOT
-USER $USERNAME
 
 # アプリケーションファイルのコピー/権限変更
 RUN chown $USERNAME:dialout /$FRONT_ROOT/*

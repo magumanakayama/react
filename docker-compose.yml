@@ -1,13 +1,23 @@
 # version: '3'
 services:
   front:
-    build: .
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      args:
+        - USER_UID=${UID}
+        - USER_GID=${GID}
+    user: "${UID}:${GID}"
     container_name: my_front # コンテナ名を指定
     volumes:
       - ./public:/react/public
       - ./src:/react/src
       - ./package.json:/react/package.json
-      # - ./yarn.lock:/react/yarn.lock
+      - ./yarn.lock:/react/yarn.lock
+      - ./node_modules:/react/node_modules
+    environment:
+      USER_UID: ${UID}
+      USER_GID: ${GID}
     ports:
       - "3000:3000"
     tty: true
