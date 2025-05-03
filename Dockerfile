@@ -31,5 +31,5 @@ RUN chown $USERNAME:dialout /$FRONT_ROOT/*
 
 # コンテナのエントリポイントをdockerInit.shに設定する
 ENTRYPOINT ["/usr/local/bin/dockerInit.sh"]
-CMD ["tail", "-f", "/dev/null"]
-# CMD ["yarn", "start"]
+# CMD ["tail", "-f", "/dev/null"]
+CMD ["yarn", "start"]
