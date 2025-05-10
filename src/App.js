@@ -25,10 +25,10 @@
 // export default App;
 
 import React, { useState, useEffect } from 'react';
-import Article from "./components/Article"
-import TextInput from "./components/TextInput"
-import Counter from "./components/Counter"
-import ToggleButton from "./components/ToggleButton"
+import Article from "./2025_04_component/Article"
+import TextInput from "./2025_04_component/TextInput"
+import Counter from "./2025_04_component/Counter"
+import ToggleButton from "./2025_04_component/ToggleButton"
 import Button from "@mui/material/Button"
 
 function App() {
