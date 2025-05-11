@@ -9,9 +9,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
-    <ReactApp />
-    {/* <SBCreative myName="マグマ中山" number={1} /> */}
+     <ReactApp/>
   </React.StrictMode>
 );
 

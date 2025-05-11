@@ -7,6 +7,7 @@ const ListComponent = ({elem}) => {
             </dt>
             <dd>
                 {elem.summary}
+                {elem.download && <a href={`https://wings.msn.to/books/${elem.isbn}/${elem.isbn}.jpg`}>画像をダウンロード</a>}
             </dd>
         </>
     )
