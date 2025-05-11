@@ -1,18 +1,21 @@
 // ライブラリのインポート
 import React from 'react';
-import PropTypes from 'prop-types';
 import books from './React_SBsample/books';
 import ListTemplate from './React_SBsample/ListTemplate';
 import LIstComponent from './React_SBsample/ListComponent';
-import MyHello from './React_SBsample/MyHello';
+import Counter from './React_SBsample/Counter';
 
 const ReactApp = () => {
     return (
+      <>
         <StyledPanel>
             <ListTemplate list={books}>
                 { elem => <LIstComponent elem={elem} key={elem.id} />} 
             </ListTemplate>
         </StyledPanel>
+
+        <Counter />
+      </>
     )
 }
 
