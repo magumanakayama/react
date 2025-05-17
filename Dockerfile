@@ -7,7 +7,7 @@ ENV FRONT_ROOT=react
 
 # git postgresのインストール
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends git postgresql-client && \
+    apt-get install -y --no-install-recommends git vim postgresql-client && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 # 実行ユーザー追加
