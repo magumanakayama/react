@@ -1,11 +1,11 @@
-up:
-	docker compose up -d --build front
+d_u:
+	@docker compose up -d --build front
 
-down:
-	docker compose down
+d_d:
+	@docker compose down
 
-exec:
-	docker exec -it my_front bash
+d_e:
+	@docker exec -it my_front bash
 
-ps:
-	docker ps
+d_p:
+	@docker ps
