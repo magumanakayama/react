@@ -6,6 +6,7 @@ d_d:
 
 d_e:
 	@docker exec -it my_front bash
+# docker exec -it -u 0 my_front bash
 
 d_p:
 	@docker ps
