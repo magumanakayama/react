@@ -9,6 +9,7 @@ import Counter from './React_SBsample/Counter';
 import StateEffect from './2025_05_component/useEffect';
 import HookTimer from './2025_05_component/HookTimer';
 import LayoutEffect from './2025_05_component/useLayoutEffect';
+import APICall from './2025_05_component/APICall';
 
 const ReactApp = () => {
     const props = {
@@ -28,12 +29,15 @@ const ReactApp = () => {
             </ListTemplate>
         </StyledPanel> */}
 
-        {/* <Counter /> */}
+        <Counter />
 
         {/* 7章 */}
         {/* <StateEffect /> */}
         {/* <HookTimer startTime={time} name={name}/> */}
-        <LayoutEffect />
+        {/* <LayoutEffect /> */}
+
+        {/* APIコール */}
+        {/* <APICall /> */}
       </>
     )
 }

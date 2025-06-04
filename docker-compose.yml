@@ -8,7 +8,7 @@ services:
         - USER_UID=${UID}
         - USER_GID=${GID}
     user: "${UID}:${GID}"
-    container_name: my_front # コンテナ名を指定
+    container_name: my_front
     volumes:
       - ./public:/react/public
       - ./shellscript_linux:/react/shellscript_linux
@@ -16,16 +16,26 @@ services:
       - ./package.json:/react/package.json
       - ./yarn.lock:/react/yarn.lock
       - ./node_modules:/react/node_modules
+      - ./express:/react/express
     environment:
       USER_UID: ${UID}
       USER_GID: ${GID}
     ports:
       - "3000:3000"
     tty: true
-    networks:
-      - nakayama_network
-    # フロントエンド（Reactなど）の開発・ビルド・配信を担当
-    # ユーザーインターフェースを提供し、APIサーバーと通信する
+
+  express:
+    image: my-express-container
+    container_name: my-express-api
+    build:
+      context: ./express
+      dockerfile: Dockerfile
+    volumes:
+      - ./express/package.json:/express_app/package.json
+      - ./express/index.js:/express_app/index.js
+    ports:
+      - "8001:8000"
+
 
   db:
     image: postgres:17-bookworm
@@ -38,42 +48,6 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data # 起動の度にボリュームが作成されるのをを防ぐのためのボリューム
       - ./init-scripts:/docker-entrypoint-initdb.d/ # 初期化スクリプトをマウント
-    networks:
-      - nakayama_network
-    # データベース（PostgreSQL）
-    # アプリケーション層やAPIサーバーからのデータ保存・取得を担当
-
-  nginx:
-    image: nginx:1.27.5-bookworm
-    ports:
-      - 8000:8000
-    networks:
-      - nakayama_network
-    # Webサーバー・リバースプロキシ
-    # 外部からのリクエストをフロントやAPIサーバーに振り分ける
-    # 静的ファイルの配信やロードバランシングも可能
-
-  express:
-    build:
-      context: ./express
-      dockerfile: Dockerfile
-    container_name: my_express
-    volumes:
-      - ./express:/app
-    ports:
-      - "4000:4000"
-    networks:
-      - nakayama_network
-    environment:
-      - DATABASE_URL=postgres://user:postgres@db:5432/my_database
-    # アプリケーション層（APIサーバー、Express）
-    # ビジネスロジックやデータベースとのやりとり、APIエンドポイントを提供
-    # フロントエンドからのリクエストを処理し、必要に応じてDBと連携
 
 volumes:
   postgres_data:
-
-
-networks:  # ネットワークの定義
-  nakayama_network:  # ネットワーク名
-    driver: bridge  # ドライバの指定
