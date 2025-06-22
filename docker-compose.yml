@@ -18,8 +18,8 @@ services:
       - ./node_modules:/react/node_modules
       - ./express:/react/express
     environment:
-      USER_UID: ${UID}
-      USER_GID: ${GID}
+      - USER_UID: ${UID}
+      - USER_GID: ${GID}
     ports:
       - "3000:3000"
     tty: true
